@@ -24,9 +24,13 @@ class StudentPartialUpdateTests(APITestCase):
         """PUT slack_handle should save the new value to the database."""
         response = client.put(
             f"/students/{nss_user.id}",
-            {"slack_handle": "@newhandle"},
+            {"slack_handle": '5235543'},
             format="json"
         )
         #  put your test code here
-        # delete this line when you are done
-        fail("Not Yet Implemented")
+        self.assertEqual(response.status_code, 204)
+
+        nss_user.refresh_from_db()
+        self.assertEqual(nss_user.slack_handle, '5235543')
+
+    
