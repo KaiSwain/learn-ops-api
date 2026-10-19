@@ -200,7 +200,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     capstones = serializers.SerializerMethodField()
     github_org_status = serializers.SerializerMethodField()
 
-    def get_github_org_status(self, obj):
+    def get_github_org_status(self,):
         return self.context['github_status']
 
     def get_staff(self, obj):
